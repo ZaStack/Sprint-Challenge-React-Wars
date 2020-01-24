@@ -14,7 +14,7 @@ const AppStyle = styled.div `
   flex-direction: column;
   align-items: center;
 `
-
+const uuidv4 = require('uuid/v4');
 
 
 const App = () => {
@@ -23,15 +23,30 @@ const App = () => {
     axios 
       .get('https://swapi.co/api/people/')
       .then(response => {
-        console.log("Initial data", response)
-        setStarCharacter(response.data)
-        console.log("Character data", response.data)
+        // console.log("Initial data", response)
+        // setTimeout(function(){ 
+        //   alert("Hold On");         
+          setStarCharacter(response.data.results)
+        // }, 5000);
+        // console.log("Star data", starCharacter)
+
       })
       .catch(error => {
         console.log("the data was not returned", error)
       })
 
   }, []);
+
+  //   const starCharacter= {
+  //   name: "Luke Skywalker",
+  //   height: "172",
+  //   mass: "77",
+  //   hair_color: "blond",
+  //   skin_color: "fair",
+  //   eye_color: "blue",
+  //   birth_year: "19BB"
+  // }
+
 
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -41,14 +56,17 @@ const App = () => {
   // sync up with, if any.
 
   return (
-    <AppStyle>
+    <AppStyle key={uuidv4()}>
+      <h1 className="Header">React Wars</h1>;
       {starCharacter.map(p => (
-        <h1 className="Header">React Wars</h1>
-        <Card name={starCharacter.name} species={starCharacter.species} homeworld={starCharacter.homeworld}/>
-        
-      ))}
+        <Card key={uuidv4()} character={starCharacter}/>
+      ))
+    }
     </AppStyle>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
+// name={starCharacter.name} height={starCharacter.height} mass={starCharacter.mass} hair_color={starCharacter.hair_color} skin_color={starCharacter.skin_color} eye_color={starCharacter.eye_color} birth_year={starCharacter.birth_year}
