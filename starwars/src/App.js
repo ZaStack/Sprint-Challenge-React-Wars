@@ -5,14 +5,30 @@ import axios from 'axios';
 import './App.css';
 
 const AppStyle = styled.div `
-  width: 100%;
-  max-width: 1200px;
+  background: black;
+  width: 60%;
+  max-width: 1000px;
   margin: 0 auto;
-  height: 1000px;
-  color: white;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  opacity: 0.6;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+  box-shadow: 5px 5px 15px 5px #000000;
+
+`
+const HeaderStyle = styled.h1 `
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 400%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  margin-top: 5vh;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.5);
+  -webkit-text-stroke: 2px #feda4a;
+  transform: perspective(300px) rotateX(40deg);
 `
 const uuidv4 = require('uuid/v4');
 
@@ -57,7 +73,7 @@ const App = () => {
 
   return (
     <AppStyle key={uuidv4()}>
-      <h1 className="Header">React Wars</h1>;
+      <HeaderStyle>React Wars</HeaderStyle>
       {starCharacter.map(p => (
         <Card key={uuidv4()} character={starCharacter}/>
       ))

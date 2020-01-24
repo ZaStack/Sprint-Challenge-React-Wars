@@ -2,9 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardStyle = styled.div`
-    background: black;
     margin: 3%;
     width: 60%;
+    opacity: 0.7;
+    border-radius: 10px;
+    padding: 2%;
+    color: #feda4a;
+    justify-self: flex-start;
+    transform: perspective(300px) rotateX(35deg);
+    line-height: 2;
+
+
 `
 
 const Card = ({character}) => {
